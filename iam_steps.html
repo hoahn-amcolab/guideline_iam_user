@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>AdministratorAccess を持つ IAM ユーザー作成手順</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; color: #333; margin: 0; padding: 0; }
+        .container { width: 100%; max-width: none; margin: 40px auto; background: #fff; padding: 30px 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h1 { color: #2e6da4; text-align: center; }
+        h2 { position: relative; padding-left: 50px; color: #4CAF50; }
+        h2 .step-number { position: absolute; left: 0; top: 0; width: 36px; height: 36px; line-height: 36px; background: #4CAF50; color: #fff; border-radius: 50%; text-align: center; font-weight: bold; }
+        img { display: block; width: 100%; max-width: none; border:1px solid #ddd; border-radius:4px; margin:12px 0; }
+        .step { margin-bottom: 40px; padding: 20px; border-left: 6px solid #4CAF50; background: #fafafa; border-radius: 4px; }
+        p { margin: 0 0 12px; }
+        a { color: #4CAF50; }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>AdministratorAccess を持つ IAM ユーザー作成手順</h1>
+    <p>以下は、ログイン後に IAM 画面から非技術者向けにユーザーを作成し、CSV ファイルをダウンロードして送付するための日本語ガイドです。各ステップに対応したスクリーンショットがあります。</p>
+
+    <div class="step">
+        <h2><span class="step-number">1</span> ステップ 1: ログイン後に IAM にアクセス</h2>
+        <p>AWS マネジメントコンソールにログインします。</p>
+        <img src="image/aws_after_login_page.png" alt="ログイン後の AWS" />
+        <p>左上の検索バーに <strong>IAM</strong> と入力し、表示された IAM を選択します。</p>
+        <img src="image/go_to_iam_page.jpg" alt="IAM 画面へ移動" />
+        <p>IAM ページでは左側のメニューから <em>Users</em> をクリックすると、既存ユーザーの一覧が表示されます。</p>
+        <img src="image/iam_page.png" alt="IAM ページ" />
+    </div>
+
+    <div class="step">
+        <h2><span class="step-number">2</span> ステップ 2: 新しい IAM ユーザーを作成</h2>
+        <p>一覧上部の <em>Create user</em> ボタンを押して作成を開始します。</p>
+        <img src="image/users_page_iam.png" alt="IAM ユーザーページ" />
+        <p>新規ユーザーの名前を入力します。</p>
+        <p>管理コンソールアクセスを与える場合はチェックを入れ、パスワードの自動生成やパスワード変更の初回要求などを設定できます。</p>
+        <img src="image/step1_create_user.jpg" alt="ユーザー作成ステップ1" />
+        <p>「Permissions」ページでは、選択肢が複数あります。</p>
+        <p>今回は <em>Attach policies directly</em>（ポリシーを直接アタッチ）を選びます。</p>
+        <img src="image/step2_create_user.jpg" alt="ユーザー作成ステップ2" />
+    </div>
+
+    <div class="step">
+        <h2><span class="step-number">2.1</span> ポリシーを直接アタッチ</h2>
+        <p>検索バーに「admin」と入力するとフィルタリングされるので、</p>
+        <p>表示される <code>AdministratorAccess</code> のチェックボックスをオンにします。</p>
+        <img src="image/step_2.2_create_user.jpg" alt="AdministratorAccess をアタッチ" />
+        <p>選択したポリシーは一覧に表示されるので、内容を確認したら下部の <em>Next</em> ボタンで次へ進みます。</p>
+    </div>
+
+    <div class="step">
+        <h2><span class="step-number">3</span> 設定内容の最終確認とユーザー作成</h2>
+        <p>これまで入力したユーザー名やアタッチしたポリシーが一覧で表示されます。</p>
+        <p>問題なければ画面右下の <em>Next</em> をクリックし、最終ページの <em>Create user</em> を押します。</p>
+        <p>しばらくすると確認メッセージとともに、アクセスキー情報が表示されます。</p>
+        <img src="image/step_3_create_user.jpg" alt="ユーザー作成ステップ3" />
+    </div>
+
+    <div class="step">
+        <h2><span class="step-number">4</span> CSV ファイルのダウンロード</h2>
+        <p>ユーザー作成完了ページで、<em>Download .csv</em> ボタンが見えます。</p>
+        <p>ここをクリックするとアクセスキーとシークレットキーが含まれた CSV ファイルが自動的にダウンロードされます。</p>
+        <p>ダウンロード後はファイルを安全に保管し、必要に応じて私たちに送信してください。</p>
+        <img src="image/step_4_create_user.jpg" alt="CSV ダウンロード" />
+    </div>
+
+    <p>以上で完了です。</p>
+    <p>ユーザーには AdministratorAccess が付与され、CSV ファイルがダウンロードされました。</p>
+    </div>
+</body>
+</html>
